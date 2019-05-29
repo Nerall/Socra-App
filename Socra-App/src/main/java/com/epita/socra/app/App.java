@@ -27,12 +27,19 @@ public final class App {
     }
 
     public void run(){
-        String number = "";
-        while (!number.equals("exit"))
-        {
-            adapter.write("Give a number (write 'exit' to exit)");
-            number = adapter.read();
-            adapter.write("Here is its morse representation\n" + Morse.toMorse(number));
-        }
+        String input;
+        do {
+            adapter.write("Give an input (write 'exit' to exit):");
+            input = adapter.read();
+            if (input.equals("exit")) {
+                break;
+            }
+            else if (input.charAt(0) == '.' || input.charAt(0) == '_') {
+                adapter.write("Here is the Arabic representation:\n" + Morse.fromMorse(input) + "\n");
+            }
+            else {
+                adapter.write("Here is its morse representation:\n" + Morse.toMorse(input) + "\n");
+            }
+        } while (true);
     }
 }

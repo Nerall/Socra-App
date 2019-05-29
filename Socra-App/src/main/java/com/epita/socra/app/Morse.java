@@ -41,11 +41,11 @@ public class Morse {
     }
 
     static String fromMorse(String word){
-        String result = "" + fromMorseMap.get(word.substring(0, 9));
+        StringBuilder result = new StringBuilder("" + fromMorseMap.get(word.substring(0, 9)));
         for (int i = 10; i < word.length(); i += 10) {
-            result = result + fromMorseMap.get(word.substring(i, i + 9));
+            result.append(fromMorseMap.get(word.substring(i, i + 9)));
         }
 
-        return result;
+        return result.toString();
     }
 }
